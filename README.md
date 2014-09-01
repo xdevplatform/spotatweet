@@ -5,6 +5,8 @@ A Spotify &amp; Twtter API mashup.
 
 This web app filters the Twitter stream for #NowPlaying tweets, extracts track IDs from Spotify URLs, requests track data from the Spotify API and plays the audio in the web browser.
 
+![Screenshot](screenshot.png?raw=true =858x "Screenshot")
+
 Installing and Running
 ----
 

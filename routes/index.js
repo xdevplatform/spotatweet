@@ -143,7 +143,9 @@ start();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index');
+  res.render('index' {
+    ga_tracking_id: nconf.get('GA_TRACKING_ID')
+  });
 });
 
 /* GET now playing json */

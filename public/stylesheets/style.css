@@ -50,13 +50,14 @@ a img {
   border: none;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
 
 html, body {
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -98,7 +99,7 @@ p {
   top: 0px;
   bottom: 0px;
   width: 100%;
-  padding-top: 10%;
+  padding-top: 5%;
   text-align: center;
 }
 #main #intro {

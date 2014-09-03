@@ -41,6 +41,7 @@ npm start
 
 Go to [http://localhost:3000](http://localhost:3000) in your browser.
 
+A GET request to /nowplaying.json will return a Tweet object hydrated with "spotify_track" object and an "oembed" object of the latest #NowPlaying Tweet.
 
 Deploying
 ---

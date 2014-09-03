@@ -54,6 +54,12 @@
         setTimeout(function () {
           getNowPlaying();
         }, 10000)
+      },
+      error: function(err) {
+        // try again after 20 seconds
+        setTimeout(function () {
+          getNowPlaying();
+        }, 20000)
       }
     });
   }

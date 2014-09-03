@@ -98,8 +98,10 @@ function getSpotifyTrack (tweet, spotifyUrl) {
     getOEmbed(tweet);
   }, function(err) {
     console.log('Track request failed: ', err);
-    if (err.status == 401) {
-      start();
+    if (err.error && err.error.status == 401) {
+      setTimeout(function () {
+        start();
+      }, 5000);
     }
   });
 }

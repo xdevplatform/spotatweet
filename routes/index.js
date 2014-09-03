@@ -71,7 +71,7 @@ function onTweet (tweet) {
       // else get the full url from the short url
       else {
         spotifyUtils.getFullUrl(url.expanded_url, function (err, fullUrl) {
-          if (!err) {
+          if (!err && allowApiRequest) {
             getSpotifyTrack(tweet, fullUrl);
           }
         });
@@ -84,18 +84,14 @@ function onTweet (tweet) {
 }
 
 function getSpotifyTrack (tweet, spotifyUrl) {
-  
-  if (!allowApiRequest) {
-    return;
-  }
-
-  allowApiRequest = false;
 
   // make sure the url contains a track id
   if ( !spotifyUtils.isTrackUrl(spotifyUrl) ) {
     return;
   }
-  
+
+  allowApiRequest = false;
+
   var trackId = spotifyUtils.getTrackIdFromUrl(spotifyUrl);
 
   // get track data from spotify api
@@ -106,6 +102,7 @@ function getSpotifyTrack (tweet, spotifyUrl) {
     console.log('Track request failed: ', err);
     if (err.error && err.error.status == 401) {
       setTimeout(function () {
+        allowApiRequest = true;
         start();
       }, 5000);
     }
@@ -113,13 +110,16 @@ function getSpotifyTrack (tweet, spotifyUrl) {
 }
 
 function getTwitterData (tweet) {
-  
+
+
   twitter.get('search/tweets', { q: tweet.spotify_track.artists[0].name, count: 20 }, function(err, data, resp) {
 
+    console.log('related_tweets');
     tweet.related_tweets = data.statuses;
 
     twitter.get('/statuses/oembed', { id: tweet.id_str, maxWidth: 300, hide_thread: true, omit_script: true }, function (err, data, resp) {
       
+      console.log('oembed');
       tweet.oembed = data;
       saveTweet(err, tweet);
     });

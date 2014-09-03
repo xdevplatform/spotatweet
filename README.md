@@ -1,9 +1,11 @@
 spotatweet
 ==========
 
-A Spotify &amp; Twtter API mashup.
+A real-time Spotify &amp; Twtter API mashup.
 
 This web app filters the Twitter stream for #NowPlaying tweets, extracts track IDs from Spotify URLs, requests track data from the Spotify API and plays the audio in the web browser.
+
+Inspired by [Serendipity](https://www.spotify.com/us/arts/serendipity/) by [@kcimc](https://twitter.com/kcimc), a Spotify Media Artist in Residence.
 
 ![Screenshot](screenshot.png?raw=true =858x "Screenshot")
 
@@ -39,6 +41,14 @@ npm start
 
 Go to [http://localhost:3000](http://localhost:3000) in your browser.
 
+
+Deploying
+---
+This application is already configured to run on Heroku and can be [deployed with Git](https://devcenter.heroku.com/articles/git).
+
+Before deployment set your Heroku environment [config vars](https://devcenter.heroku.com/articles/config-vars) to mirror config.json.
+
+On Heroku set NODE_ENV to "production."
 
 
 Resources

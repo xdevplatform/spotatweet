@@ -3,7 +3,7 @@ spotatweet
 
 A real-time Spotify &amp; Twtter API mashup.
 
-This web app filters the Twitter stream for #NowPlaying tweets, extracts track IDs from Spotify URLs, requests track data from the Spotify API and plays the audio in the web browser.
+This web app filters the Twitter stream for #NowPlaying tweets, extracts track IDs from Spotify URLs, requests track data from the Spotify API and plays the audio in the web browser. Implements Twitter status/filter stream and oEmbed API.
 
 Inspired by [Serendipity](https://www.spotify.com/us/arts/serendipity/) by [@kcimc](https://twitter.com/kcimc), a Spotify Media Artist in Residence.
 
@@ -53,6 +53,7 @@ On Heroku set NODE_ENV to "production."
 
 Resources
 ----
-- [Spotify Web API](https://developer.spotify.com/web-api/)
 - [Twitter API statuses/filter stream](https://dev.twitter.com/docs/api/1.1/post/statuses/filter)
 - [Twitter API oEmbed](https://dev.twitter.com/docs/api/1/get/statuses/oembed)
+- [Twitter REST API Rate Limiting](https://dev.twitter.com/docs/rate-limiting/1.1)
+- [Spotify Web API](https://developer.spotify.com/web-api/)

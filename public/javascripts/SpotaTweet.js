@@ -14,7 +14,7 @@
     $.ajax({
       url: '/nowplaying.json',
       success: function(tweet){
-        console.log(tweet.spotify_track.album.images[0].url);
+        console.log(tweet);
 
         // check that track is not the same
         if (!tweetNowPlaying || tweetNowPlaying.id_str != tweet.id_str) {

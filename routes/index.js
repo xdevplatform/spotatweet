@@ -84,6 +84,12 @@ function onTweet (tweet) {
 }
 
 function getSpotifyTrack (tweet, spotifyUrl) {
+  
+  if (!allowApiRequest) {
+    return;
+  }
+
+  allowApiRequest = false;
 
   // make sure the url contains a track id
   if ( !spotifyUtils.isTrackUrl(spotifyUrl) ) {
@@ -95,7 +101,7 @@ function getSpotifyTrack (tweet, spotifyUrl) {
   // get track data from spotify api
   spotify.getTrack(trackId).then(function (trackData) {
     tweet.spotify_track = trackData;
-    getOEmbed(tweet);
+    getTwitterData(tweet);
   }, function(err) {
     console.log('Track request failed: ', err);
     if (err.error && err.error.status == 401) {
@@ -106,39 +112,30 @@ function getSpotifyTrack (tweet, spotifyUrl) {
   });
 }
 
-var ombedWindowOpen = true, tweetNowPlaying = {};
-
-function getOEmbed (tweet) {
+function getTwitterData (tweet) {
   
-  if (!ombedWindowOpen) {
-    return;
-  }
+  twitter.get('search/tweets', { q: tweet.spotify_track.artists[0].name, count: 20 }, function(err, data, resp) {
 
-  ombedWindowOpen = false;
-  
-  twitter.get('/statuses/oembed', { id: tweet.id_str, maxWidth: 300, hide_thread: true, omit_script: true }, function (err, oembedData, resp) {
-    
-    if (err) {
-      console.log(err);
-      console.log('Waiting 15 minutes . . .');
+    tweet.related_tweets = data.statuses;
 
-      // rate limit exceeded, open window in 15 minutes
-      setTimeout(function () {
-        ombedWindow = true;
-      }, 900000);
-
-      return;
-    }
-
-    tweet.oembed = oembedData;
-    tweetNowPlaying = tweet;
-
-    // try to stay within rate limtis and open window in 10 seconds
-    setTimeout(function () {
-      ombedWindowOpen = true;
-    }, 10000);
+    twitter.get('/statuses/oembed', { id: tweet.id_str, maxWidth: 300, hide_thread: true, omit_script: true }, function (err, data, resp) {
+      
+      tweet.oembed = data;
+      saveTweet(err, tweet);
+    });
   });
+}
 
+var allowApiRequest = true, tweetNowPlaying = {};
+
+function saveTweet (err, tweet) {
+
+  tweetNowPlaying = tweet;
+
+  // try to stay within rate limtis and open window in 10 seconds
+  setTimeout(function () {
+    allowApiRequest = true;
+  }, 10000);
 }
 
 start();

@@ -73,3 +73,21 @@ p {
     }
   }
 }
+
+.github {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  color: #666;
+  font-size: 10px;
+  display: block;
+
+  a {
+    color: #999;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}

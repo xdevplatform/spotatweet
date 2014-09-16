@@ -1,14 +1,16 @@
 (function () {
 
+  var tweetHolder, tweetNowPlaying, sound;
+
   soundManager.setup({
     useHTML5Audio: true,
     debugMode: false,
     onready: function() {
+      tweetHolderEl = $('#tweet-holder');
+      backgroundEl = $('#background');
       getNowPlaying();
     }
   });
-
-  var tweetNowPlaying, sound;
 
   function getNowPlaying () {
     $.ajax({
@@ -25,19 +27,19 @@
 
           tweetNowPlaying = tweet;
 
-          $('#tweet-holder').removeClass('fadeInUp');
-          $('#tweet-holder').addClass('animated fadeOutDown');
-          $('#tweet-holder').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+          tweetHolderEl.removeClass('fadeInUp');
+          tweetHolderEl.addClass('animated fadeOutDown');
+          tweetHolderEl.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
             
             // update background
-            $('#background').removeClass('fadeIn');
-            $('#background').addClass('animated fadeOut');
-            $('#background').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
-              $('#background').css('background-image', 'url(' + tweet.spotify_track.album.images[2].url + ')');
+            backgroundEl.removeClass('fadeIn');
+            backgroundEl.addClass('animated fadeOut');
+            backgroundEl.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+              backgroundEl.css('background-image', 'url(' + tweet.spotify_track.album.images[2].url + ')');
             });
 
             // embed tweet
-            $('#tweet-holder').html(tweet.oembed.html);
+            tweetHolderEl.html(tweet.oembed.html);
             twttr.widgets.load();
           });
 
@@ -77,11 +79,11 @@
   }
 
   twttr.events.bind('loaded', function () {
-    $('#tweet-holder').removeClass('fadeOutDown');
-    $('#tweet-holder').addClass('animated fadeInUp');
-    $('#tweet-holder').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {     
-      $('#background').removeClass('fadeOut');
-      $('#background').addClass('animated fadeIn')
+    tweetHolderEl.removeClass('fadeOutDown');
+    tweetHolderEl.addClass('animated fadeInUp');
+    tweetHolderEl.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {     
+      backgroundEl.removeClass('fadeOut');
+      backgroundEl.addClass('animated fadeIn')
     });
   });
 

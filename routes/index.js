@@ -114,12 +114,15 @@ function getTwitterData (tweet) {
 
   twitter.get('search/tweets', { q: tweet.spotify_track.artists[0].name, count: 20 }, function(err, data, resp) {
 
-    console.log('related_tweets');
-    tweet.related_tweets = data.statuses;
+    if (err) {
+      console.log(err)
+    } else {
+      tweet.related_tweets = data.statuses;
+    }
 
     twitter.get('/statuses/oembed', { id: tweet.id_str, maxWidth: 300, hide_thread: true, omit_script: true }, function (err, data, resp) {
       
-      console.log('oembed');
+      //console.log('oembed');
       tweet.oembed = data;
       saveTweet(err, tweet);
     });

@@ -14,7 +14,11 @@
     $.ajax({
       url: '/nowplaying.json',
       success: function(tweet){
-        console.log(tweet);
+
+        if(!tweet.spotify_track) {
+          tryAgain();
+          return;
+        }
 
         // check that track is not the same
         if (!tweetNowPlaying || tweetNowPlaying.id_str != tweet.id_str) {
@@ -61,7 +65,15 @@
           getNowPlaying();
         }, 20000)
       }
+    }).error(function (e) {
+      tryAgain();
     });
+  }
+
+  function tryAgain () {
+    setTimeout(function () {
+      getNowPlaying();
+    }, 1500)
   }
 
   twttr.events.bind('loaded', function () {

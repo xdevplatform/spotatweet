@@ -111,21 +111,11 @@ function getSpotifyTrack (tweet, spotifyUrl) {
 
 function getTwitterData (tweet) {
 
-
-  twitter.get('search/tweets', { q: tweet.spotify_track.artists[0].name, count: 20 }, function(err, data, resp) {
-
-    if (err) {
-      console.log(err)
-    } else {
-      tweet.related_tweets = data.statuses;
-    }
-
-    twitter.get('/statuses/oembed', { id: tweet.id_str, maxWidth: 300, hide_thread: true, omit_script: true }, function (err, data, resp) {
-      
-      //console.log('oembed');
-      tweet.oembed = data;
-      saveTweet(err, tweet);
-    });
+  twitter.get('statuses/oembed', { "id": tweet.id_str, "maxwidth": 440, "hide_thread": true, "omit_script": true }, function (err, data, resp) {
+    
+    console.log('tweet.id_str:', tweet.id_str);
+    tweet.oembed = data;
+    saveTweet(err, tweet);
   });
 }
 

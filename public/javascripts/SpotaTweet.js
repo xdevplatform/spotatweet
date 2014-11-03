@@ -1,6 +1,6 @@
 (function () {
 
-  var tweetHolder, tweetNowPlaying, sound;
+  var tweetHolderEl, tweetNowPlaying, sound;
 
   soundManager.setup({
     useHTML5Audio: true,

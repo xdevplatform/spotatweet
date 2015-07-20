@@ -12,7 +12,7 @@ Inspired by [Serendipity](https://www.spotify.com/us/arts/serendipity/) by [@kci
 Installing and Running
 ----
 
-Install [Node.js](http://nodejs.org/).
+Install [Node.js](https://nodejs.org/).
 
 Clone GitHub repo:
 

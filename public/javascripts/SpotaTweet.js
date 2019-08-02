@@ -5,19 +5,19 @@
   soundManager.setup({
     useHTML5Audio: true,
     debugMode: false,
-    onready: function() {
+    onready: function () {
       tweetHolderEl = $('#tweet-holder');
       backgroundEl = $('#background');
       getNowPlaying();
     }
   });
 
-  function getNowPlaying () {
+  function getNowPlaying() {
     $.ajax({
       url: '/nowplaying.json',
-      success: function(tweet){
+      success: function (tweet) {
 
-        if(!tweet.spotify_track) {
+        if (!tweet.spotify_track) {
           tryAgain();
           return;
         }
@@ -30,12 +30,12 @@
           tweetHolderEl.removeClass('fadeInUp');
           tweetHolderEl.addClass('animated fadeOutDown');
           tweetHolderEl.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
-            
+
             // update background
             backgroundEl.removeClass('fadeIn');
             backgroundEl.addClass('animated fadeOut');
             backgroundEl.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
-              backgroundEl.css('background-image', 'url(' + tweet.spotify_track.album.images[2].url + ')');
+              backgroundEl.css('background-image', 'url(' + tweet.spotify_track.body.album.images[2].url + ')');
             });
 
             // embed tweet
@@ -43,14 +43,13 @@
             twttr.widgets.load();
           });
 
-            
           // stop current track, create new track and play it
           if (sound) {
             sound.stop();
           }
 
           sound = soundManager.createSound({
-            url: tweet.spotify_track.preview_url
+            url: tweet.spotify_track.body.preview_url
           });
 
           sound.play();
@@ -61,7 +60,7 @@
           getNowPlaying();
         }, 10000)
       },
-      error: function(err) {
+      error: function (err) {
         // try again after 20 seconds
         setTimeout(function () {
           getNowPlaying();
@@ -72,7 +71,7 @@
     });
   }
 
-  function tryAgain () {
+  function tryAgain() {
     setTimeout(function () {
       getNowPlaying();
     }, 1500)
@@ -81,7 +80,7 @@
   twttr.events.bind('loaded', function () {
     tweetHolderEl.removeClass('fadeOutDown');
     tweetHolderEl.addClass('animated fadeInUp');
-    tweetHolderEl.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {     
+    tweetHolderEl.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
       backgroundEl.removeClass('fadeOut');
       backgroundEl.addClass('animated fadeIn')
     });

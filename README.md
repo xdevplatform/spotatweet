@@ -7,7 +7,7 @@ This web app filters the Twitter stream for #NowPlaying tweets, extracts track I
 
 Inspired by [Serendipity](https://twitter.com/search?q=kcimc%20serendipity) by [@kcimc](https://twitter.com/kcimc), formerly a Spotify Media Artist in Residence.
 
-![Screenshot](screenshot.png?raw=true =858x "Screenshot")
+![Screenshot](screenshot.png?raw=true "Screenshot")
 
 Installing and Running
 ----

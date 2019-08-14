@@ -5,7 +5,7 @@ A real-time Spotify &amp; Twitter API mashup.
 
 This web app filters the Twitter stream for #NowPlaying tweets, extracts track IDs from Spotify URLs, requests track data from the Spotify API, displays the embedded Tweet in the web browser and plays a preview. Implements Twitter statuses/filter stream and oEmbed API.
 
-Inspired by [Serendipity](https://www.spotify.com/us/arts/serendipity/) by [@kcimc](https://twitter.com/kcimc), a Spotify Media Artist in Residence.
+Inspired by [Serendipity](https://twitter.com/search?q=kcimc%20serendipity) by [@kcimc](https://twitter.com/kcimc), formerly a Spotify Media Artist in Residence.
 
 ![Screenshot](screenshot.png?raw=true =858x "Screenshot")
 
@@ -27,7 +27,7 @@ Create Twitter and Spotify Apps:
 
 Create a config.json file using config.sample.json as a template. Fill in your Twitter & Spotify API Keys.
 
-Install [Compass](http://compass-style.org/) Ruby Gem.
+(optional) Install [Compass](http://compass-style.org/) Ruby Gem.
 
 ```bash
 gem install compass

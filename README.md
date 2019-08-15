@@ -33,7 +33,7 @@ Create a config.json file using config.sample.json as a template. Fill in your T
 gem install compass
 ```
 
-If you do not want Compass support, comment out this line in app.js
+If you want Compass support, uncomment this line in app.js
 
 ```javascript
 // app.use(require('node-compass')({mode: 'compress'}));

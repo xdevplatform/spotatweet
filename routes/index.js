@@ -7,9 +7,9 @@ var SpotifyWebApi = require('spotify-web-api-node');
 var spotifyUtils = require('../utils/spotify-utils');
 var _ = require('lodash');
 
-nconf.file({
+nconf.env().file({
   file: 'config.json'
-}).env();
+});
 
 var spotify = new SpotifyWebApi({
   clientId: nconf.get('SPOTIFY_CLIENT_ID'),

@@ -1,4 +1,4 @@
-spotatweet
+SpotaTweet
 ==========
 
 A real-time Spotify &amp; Twitter API mashup.
@@ -25,7 +25,7 @@ Create Twitter and Spotify Apps:
 - Create a [Twitter application](https://developer.twitter.com/en/apps).
 - Create a [Spotify application](https://developer.spotify.com/my-applications).
 
-Create a config.json file using config.sample.json as a template. Fill in your Twitter & Spotify API Keys.
+Create a `config.json` file using `config.sample.json` as a template. Fill in your Twitter & Spotify API Keys. You may also set the values in the `config.sample.json` file as environment variables for environments like Heroku and Glitch. Values set in the environment will override those set in the config file.
 
 Install node module dependencies:
 
@@ -39,9 +39,9 @@ Run application:
 npm start
 ```
 
-Go to [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-A GET request to /nowplaying.json will return a Tweet object hydrated with a "spotify_track" object and a "oembed" object of the latest #NowPlaying Tweet.
+A GET request to /nowplaying.json will return a Tweet object, additionally hydrated with a "spotify_track" object and a "oembed" object representing the latest #NowPlaying Tweet.
 
 Deploying
 ---
@@ -51,6 +51,11 @@ This application is already configured to run on Heroku and can be [deployed wit
 Before deployment set your Heroku environment [config vars](https://devcenter.heroku.com/articles/config-vars) to mirror config.json.
 
 On Heroku set NODE_ENV to "production."
+
+Limitations
+---
+
+A Spotify developer token only lasts for 3600 seconds (one hour), so the app will need to be restarted after that time.
 
 Resources
 ----

@@ -27,18 +27,6 @@ Create Twitter and Spotify Apps:
 
 Create a config.json file using config.sample.json as a template. Fill in your Twitter & Spotify API Keys.
 
-(optional) Install [Compass](http://compass-style.org/) Ruby Gem.
-
-```bash
-gem install compass
-```
-
-If you want Compass support, uncomment this line in app.js
-
-```javascript
-// app.use(require('node-compass')({mode: 'compress'}));
-```
-
 Install node module dependencies:
 
 ```bash

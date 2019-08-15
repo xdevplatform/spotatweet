@@ -13,7 +13,6 @@
     "serve-favicon": "~2.5.0",
     "debug": "~4.1.1",
     "ejs": "~2.6.2",
-    "node-compass": "0.2.4",
     "spotify-web-api-node": "4.0.0",
     "twit": "~2.2.11",
     "nconf": "~0.10.0",

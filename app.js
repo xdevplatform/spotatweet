@@ -24,9 +24,6 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
-// app.use(require('node-compass')({
-//     mode: 'compress'
-// }));
 
 // define static assets after middleware if running on dev (Heroku workaround)
 if (app.get('env') === 'development') {

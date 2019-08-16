@@ -59,7 +59,8 @@ You can also easily remix this project on [Glitch](https://glitch.com). Set the 
 
 ## Limitations
 
-A Spotify developer token only lasts for 3600 seconds (one hour), so the app will need to be restarted after that time.
+- A Spotify developer token only lasts for 3600 seconds (one hour), so the app will need to be restarted after that time.
+- Web audio does not autoplay on mobile Safari and some other browsers
 
 ## Resources
 

@@ -1,5 +1,4 @@
-SpotaTweet
-==========
+# SpotaTweet
 
 A real-time Spotify &amp; Twitter API mashup.
 
@@ -9,8 +8,7 @@ Inspired by [Serendipity](https://twitter.com/search?q=kcimc%20serendipity) by [
 
 ![Screenshot](screenshot.png?raw=true "Screenshot")
 
-Installing and Running
-----
+## Installing and Running
 
 Install [Node.js](https://nodejs.org/).
 
@@ -43,22 +41,27 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 A GET request to /nowplaying.json will return a Tweet object, additionally hydrated with a "spotify_track" object and a "oembed" object representing the latest #NowPlaying Tweet.
 
-Deploying
----
+## Deploying
 
-This application is already configured to run on Heroku and can be [deployed with Git](https://devcenter.heroku.com/articles/git).
+### Heroku
+
+This application is already configured to run on [Heroku](https://www.heroku.com) and can be [deployed with Git](https://devcenter.heroku.com/articles/git).
 
 Before deployment set your Heroku environment [config vars](https://devcenter.heroku.com/articles/config-vars) to mirror config.json.
 
 On Heroku set NODE_ENV to "production."
 
-Limitations
----
+### Glitch
+
+You can also easily remix this project on [Glitch](https://glitch.com). Set the environment variables in the `.env` file.
+
+[![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/import/github/twitterdev/spotatweet?TWITTER_CONSUMER_KEY=&TWITTER_CONSUMER_SECRET=&TWITTER_ACCESS_TOKEN=&TWITTER_ACCESS_TOKEN_SECRET=&SPOTIFY_CLIENT_ID=&SPOTIFY_CLIENT_SECRET=)
+
+## Limitations
 
 A Spotify developer token only lasts for 3600 seconds (one hour), so the app will need to be restarted after that time.
 
-Resources
-----
+## Resources
 
 - [Twitter statuses/filter stream](https://developer.twitter.com/en/docs/tweets/filter-realtime/api-reference/post-statuses-filter.html)
 - [Twitter oEmbed](https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-oembed.html)
